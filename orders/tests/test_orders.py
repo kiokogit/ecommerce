@@ -33,9 +33,8 @@ class OrdersViewTestCase(APITestCase):
         self.url = '/api/orders/'
         self.client.credentials(HTTP_AUTHORIZATION='Bearer A_ACCESS_TOKEN')
 
-    @patch('orders.utils.send_sms')
     def test_create_order(self):
-        data = {'customer': self.customer, 'item_name': 'Item2', 'amount': 200}
+        data = {'customer': self.customer.id, 'item_name': 'Item2', 'amount': 200}
         response = self.client.post(self.url, data=data)
         
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)

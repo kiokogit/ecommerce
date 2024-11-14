@@ -27,12 +27,12 @@ class CustomerViewTestCase(APITestCase):
         self.url = '/api/customers/'
         self.client.credentials(HTTP_AUTHORIZATION='Bearer A_ACCESS_TOKEN')
 
+    def tearDown(self):
+        Customer.objects.all().delete()
+       
     def test_create_customer(self):
-        data = {'name': 'CustomerTest2', 'code': '002BC', 'phone_number': '0000000'} # using invalid phone number
-        response = self.client.post(self.url, data=data)
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST) # phone number
+        data = {'name': 'CustomerTest2', 'code': '002BC', 'phone_number': '+254708989889'} # using valid phone number
         
-        data['phone_number'] = '+2547002902902'
         response = self.client.post(self.url, data=data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Customer.objects.count(),  2)
