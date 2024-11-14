@@ -1,8 +1,8 @@
 from rest_framework import routers
-from .views import CustometsGenericViewSet
+from .views import CustomersGenericViewSet
 
 router = routers.DefaultRouter()
 
-router.register(" ", CustometsGenericViewSet, basename='customer-view')
+router.register(r"", CustomersGenericViewSet, basename='customers')
 
 urlpatterns = router.urls

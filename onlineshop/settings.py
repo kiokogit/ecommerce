@@ -140,6 +140,8 @@ REST_FRAMEWORK = {
 }
 
 
+APPEND_SLASH = False
+
 # Africa's talking sandbox
 AFR_TKG_USERNAME = os.environ.get('AFR_TKG_USERNAME', '')
 AFR_TKG_API_KEY = os.environ.get('AFR_TKG_API_KEY', '')
