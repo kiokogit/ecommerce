@@ -41,6 +41,11 @@ python manage.py runserver
 ```
 Access the server at localhost:800 by default
 
+## SWAGGER DOCUMENTATION
+All the api endpoints are documented using swagger. Check it on ```{your_endpoint}/```
+To get the deployed swagger docs, check out: 
+![API Swagger Documentation](https://onlineshopapi-ctyo.onrender.com)
+
 
 ## TESTS
 To run tests using coverage
