@@ -156,6 +156,13 @@ GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', '')
 GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET', '')
 GOOGLE_PROJECT_ID = os.environ.get('GOOGLE_PROJECT_ID')
 
+GOOGLE_OAUTH_SIGN_ALGO = "RS256"
+
+GOOGLE_OIDC_AUTHORIZATION_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth" 
+GOOGLE_OIDC_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token" 
+GOOGLE_OIDC_USERINFO_ENDPOINT = "https://openidconnect.googleapis.com/v1/userinfo"
+GOOGLE_OIDC_JWKS_ENDPOINT = "https://www.googleapis.com/oauth2/v3/certs"
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 

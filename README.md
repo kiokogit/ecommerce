@@ -119,5 +119,8 @@ body_example:
 ```
 
 
+## TEST APP
+Since this is a test app, dbsqlite3 is the configured database; 
+for postgres, uncomment these settings:
 
 ....END...
