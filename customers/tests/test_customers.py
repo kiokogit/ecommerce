@@ -27,9 +27,6 @@ class CustomerViewTestCase(APITestCase):
         self.url = '/api/customers/'
         self.client.credentials(HTTP_AUTHORIZATION='Bearer A_ACCESS_TOKEN')
 
-    def tearDown(self):
-        Customer.objects.all().delete()
-       
     def test_create_customer(self):
         data = {'name': 'CustomerTest2', 'code': '002BC', 'phone_number': '+254708989889'} # using valid phone number
         
