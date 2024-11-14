@@ -1,5 +1,6 @@
 # Online shop
-This implements shop
+This implements an imitation of an online shop with customers and items; accessed through openidconnect authed users, and social logins (Oauth2)
+
 
 ## Interaction
 To use this service, access test data at onlineshop.onrender.com/kiokogit/
@@ -121,6 +122,29 @@ body_example:
 
 ## TEST APP
 Since this is a test app, dbsqlite3 is the configured database; 
-for postgres, uncomment these settings:
+for postgres, uncomment these lines in settings.py
+```py
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('DATABASES_DEFAULT_ENGINE', 'django.db.backends.postgresql_psycopg2'),
+#         'NAME': os.getenv('DATABASES_DEFAULT_NAME'),
+#         'USER': os.getenv('DATABASES_DEFAULT_USER'),
+#         'PASSWORD': os.getenv('DATABASES_DEFAULT_PASSWORD'),
+#         'HOST': os.getenv('DATABASES_DEFAULT_HOST'),
+#         'PORT': os.getenv('DATABASES_DEFAULT_PORT'),
+#     }
+# }
+```
+Then set the corresponding env values
+
+## DEPLOYMENT AND CICD
+This app has dev.yaml file that triggers github actions to ```deploy``` on render.com using ```DEPLOYMENT HOOK```
+
+To set it up, 
+Login to render.com and set up a new web service, and set ```autodeploy=False``` so that it does not deploy by commits, but by pull requests and push to main branch
+
+on your github repository (if using github actions), set Repository secrets on Repository settings
+add: ```RENDER_DEPLOY_HOOK_URL``` and add value from render.com service
+
 
 ....END...
