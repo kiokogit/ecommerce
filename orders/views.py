@@ -16,16 +16,18 @@ class OrdersViewset(ModelViewSet):
     serializer_class = GenericOrderSerializer
     queryset = Order.objects.all()
     
-    def perform_create(self, serializer):
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
         if not serializer.is_valid():
             return Response({'details': serializer.errors}, 400)
         
         order = serializer.save()
         
         message = f'Your order for {order.item_name} has been received successfully. Please wait as we process'
-        
-        send_sms([order.customer.phone_number], message)
-        return Response({'details': 'Order placed successfully'}, 200)
+        success, info = send_sms([order.customer.phone_number], message)
+        if not success:
+            return Response({'details': info}, 400)
+        return Response(self.serializer_class(order).data, 201)
     
             
         

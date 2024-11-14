@@ -8,7 +8,7 @@ def send_sms(phone_numbers: list, message):
     sms = africastalking.SMS
     try:
         response = sms.send(message, phone_numbers)
-        if not response['SMSMessageData']['Recipients'][0]['status'] != 'Success':
+        if response['SMSMessageData']['Recipients'][0]['status'] != 'Success':
             return False, 'Sending of message has failed.'
     except Exception as e:
         print(e)
