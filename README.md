@@ -92,7 +92,8 @@ To call resources, add basic token authentication
 
 ### Message service
 For use of Messaging the customer
-Login to Africas talking sandbox site, and get the credentials for the sandbox; When you place an order, a message should appear at
+Login to Africas talking sandbox site, and get the credentials for the sandbox; When you place an order, a message should appear as below:
+![AFRICA'S TALKING SCREEN](/Screenshot%202024-11-14%20at%2021.32.33.png)
 
 ## API ENDPOINTS
 
