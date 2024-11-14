@@ -18,10 +18,13 @@ install requirements using pip (or any other tool)
 pip install -r requirements.txt
 ```
 Create a .env file with the following mandatory envs
-For test values... well; hold on
+
 ```bash
-GOOGLE_CLIENT_ID = ''
-GOOGLE_CLIENT_SECRET = ''
+# if using google. can use any other social app for auth
+GOOGLE_CLIENT_ID=clientid
+GOOGLE_CLIENT_SECRET=None
+SECRET_KEY=secret_key
+DEBUG=True/False
 
 AFR_TKG_USERNAME = ''
 AFR_TKG_API_KEY = ''
@@ -38,42 +41,65 @@ python manage.py runserver
 Access the server at localhost:800 by default
 
 
-## API ENDPOINTS
+## TESTS
+To run tests using coverage
+```bash
+ pip install coverage
+ coverage run -m pytest
+ coverage report -m
+```
+Include OAuth2 authentication headers
 
-### login
-GET
-```/api/google-login```
+## Logging In
+With the app running on localhost, register an application to get an access code to interact with the app
+- Go to:
+```localhost:8000/o/applications```
+Login to as a super user and proceed to applications
+![Register app](/Screenshot%202024-11-13%20at%2023.54.49.png)
 
-GET 
-```/api/google-callback?code=''&error=''```
+Enter credentials,
+![Register app](/Screenshot%202024-11-13%20at%2023.55.27.png)
 
-### Update customer details
- - To update phone number, and other details not in oauth
- - Phone number must be valid (has country code)
- - Cannot place order without phone number
+Get access code for authentication
 
-POST
-```/api/update-profile```
-body example: 
+```http://localhost:8000/o/token/``` Use BASIC AUTH for authorization
+
+![Get code](/Screenshot%202024-11-14%20at%2009.45.54.png)
+
+And for request body, enter the following in form data
+![Get code data](/Screenshot%202024-11-14%20at%2009.49.49.png)
+
+Success response: 
+
 ```json
 {
-    "phone_number": "+2547xxxxxx"
+    "access_token": "<access_token>",
+    "token_type": "Bearer",
+    "expires_in": 36000,
+    "refresh_token": "<refresh_token>",
+    "scope": "read write groups"
 }
 ```
 
-### Update products catalogue
-- For admin, to create new products
-- Item code must be unique
+To call resources, add basic token authentication
+![Access resources](/Screenshot%202024-11-14%20at%2009.52.52.png)
 
-POST
-```/api/update-items```
+### Message service
+For use of Messaging the customer
+Login to Africas talking sandbox site, and get the credentials for the sandbox; When you place an order, a message should appear at
 
-body example: 
+## API ENDPOINTS
+
+### Update customer details
+Cannot place order without phone number
+
+```/api/customers/```
+create example: 
 ```json
 {
-    "item_name": "Zoom Camera",
-    "item_code": "ZM-002",
-    "amount": 200
+    "name": "Cutomer1",
+    "code": "bs001",
+    "phone_number": "+2547xxxxxx" // must have country code
 }
 ```
 
@@ -81,14 +107,17 @@ body example:
 - For customer as the logged in user
 
 POST
-```/api/place-order```
+```/api/orders/```
 
 body_example: 
 ```json
 {
-    "item_code": "ZM-002"
+    "item_name": "Sugae2",
+    "amount":100.56,
+    "customer_id": 1
 }
 ```
+
 
 
 ....END...
