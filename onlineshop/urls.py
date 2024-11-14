@@ -43,7 +43,7 @@ urlpatterns = [
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('auth/', include('social_django.urls', namespace='social')),
 
-    path('', schema_view.with_ui('swagger', cache_timeout=0),
+    path('documentation/', schema_view.with_ui('swagger', cache_timeout=0),
          name='schema-swagger-ui'),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0),
             name='schema-json'),
