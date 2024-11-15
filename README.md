@@ -44,13 +44,13 @@ Access the server at localhost:800 by default
 ## SWAGGER DOCUMENTATION
 All the api endpoints are documented using swagger. Check it on ```{your_endpoint}/documentation/```
 To get the deployed swagger docs, check out: 
-![API Swagger Documentation](https://onlineshopapi-ctyo.onrender.com/documentation/)
+[API Swagger Documentation](https://onlineshopapi-ctyo.onrender.com/documentation/)
 
 
 ## TESTS
 To run tests using coverage
 ```bash
- pip install coverage
+ pip install coverage pytest
  coverage run -m pytest
  coverage report -m
 ```
@@ -91,8 +91,8 @@ To call resources, add basic token authentication
 ![Access resources](/Screenshot%202024-11-14%20at%2009.52.52.png)
 
 ### Message service
-For use of Messaging the customer
-Login to Africas talking sandbox site, and get the credentials for the sandbox; When you place an order, a message should appear as below:
+For Alerting the customer of the orders
+Login to Africa's Talking sandbox, and get the credentials for the sandbox; When you place an order, a message should appear as below:
 ![AFRICA'S TALKING SCREEN](/Screenshot%202024-11-14%20at%2021.32.33.png)
 
 ## API ENDPOINTS
