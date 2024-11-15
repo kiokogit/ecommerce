@@ -128,7 +128,7 @@ body_example:
 
 ## TEST APP
 Since this is a test app, dbsqlite3 is the configured database; 
-for postgres, uncomment these lines in settings.py
+for postgres or any other db configuration, uncomment these lines in settings.py
 ```py
 # DATABASES = {
 #     'default': {
@@ -143,7 +143,7 @@ for postgres, uncomment these lines in settings.py
 ```
 Then set the corresponding env values
 
-## DEPLOYMENT AND CICD
+## DEPLOYMENT AND CI/CD
 This app has dev.yaml file that triggers github actions to ```deploy``` on render.com using ```DEPLOYMENT HOOK```
 
 To set it up, 
